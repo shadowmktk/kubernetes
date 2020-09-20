@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: traefik-https-demo
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+spec:
+  tls:
+  - secretName: example.traefik-https-demo.com
+  rules:
+  - host: example.traefik-https-demo.com
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: traefik-https-demo
+          servicePort: 80
