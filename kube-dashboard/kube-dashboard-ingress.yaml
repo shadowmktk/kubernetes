@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+spec:
+  tls:
+  - secretName: example.kubernetes-dashboard.com
+  rules:
+  - host: example.kubernetes-dashboard.com
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 443
