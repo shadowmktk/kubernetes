@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus
+  namespace: kube-system
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  rules:
+  - host: web.prometheusui.com
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: prometheus
+          servicePort: 9090
