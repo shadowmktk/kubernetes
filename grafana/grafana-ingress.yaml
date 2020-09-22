@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: grafana
+  namespace: kube-system
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  rules:
+  - host: web.grafanaui.com
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: grafana
+          servicePort: 3000

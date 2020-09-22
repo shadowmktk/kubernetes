@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+  namespace: kube-system
+data:
+  grafana.ini: |
+    [server]
+    root_url = your_url
+    [smtp]
+    enabled = true
+    host = smtp.163.com
+    user = your@163.com
+    password = yourpassword
+    skip_verify = true
+    from_address = your@163.com
+    [alerting]
+    enabled = true
+    execute_alerts = true
